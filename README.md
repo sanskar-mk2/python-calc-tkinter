@@ -1,2 +1,4 @@
-# python-calc-tkinter
-Integer Calculator with GUI made with Python and tkinter
+# Python Tkinter Calculator
+Integer Calculator with GUI made with Python and tkinter<br>
+***
+![Example](example.png)
