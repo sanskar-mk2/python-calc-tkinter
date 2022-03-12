@@ -3,7 +3,7 @@ from functools import partial
 
 
 class Calculator:
-    def __init__(self, root, title) -> None:
+    def __init__(self, root: tk.Tk, title: str) -> None:
         self.root = root
         self.root.title(title)
         self.nbtns: list[tk.Button] = list()
@@ -19,16 +19,16 @@ class Calculator:
         elif n in "+*/":
             if len(self.ent.get()) == 0:
                 return
-            self.total = int(self.ent.get())           
+            self.total = int(self.ent.get())
             self.sign = n
             self.ent.delete(0, "end")
         elif n == "-":
             if len(self.ent.get()) == 0:
-               self.ent.insert("end", n)
+                self.ent.insert("end", n)
             else:
                 if len(self.ent.get()) == 0:
                     return
-                self.total = int(self.ent.get())           
+                self.total = int(self.ent.get())
                 self.sign = n
                 self.ent.delete(0, "end")
         elif n == "=":
@@ -50,10 +50,9 @@ class Calculator:
                     self.ent.delete(0, "end")
                     self.ent.insert(0, str(self.total))
         elif n == "C":
-            self.ent.delete(len(self.ent.get())-1, "end")
+            self.ent.delete(len(self.ent.get()) - 1, "end")
         else:
             pass
-                
 
     def makebtns(self):
         for i in range(10):
