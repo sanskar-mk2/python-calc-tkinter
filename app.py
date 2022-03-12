@@ -12,14 +12,18 @@ class Calculator:
         self.sign = str()
         self.makebtns()
         self.arrange()
+        self.error: bool = False
 
     def npress(self, n):
-        if n in "1234567890":
+        if self.error:
+            self.cleanup()
+            self.error = False
+        if n in "1234567890.":
             self.ent.insert("end", n)
         elif n in "+*/":
             if len(self.ent.get()) == 0:
                 return
-            self.total = int(self.ent.get())
+            self.total = float(self.ent.get())
             self.sign = n
             self.ent.delete(0, "end")
         elif n == "-":
@@ -28,31 +32,44 @@ class Calculator:
             else:
                 if len(self.ent.get()) == 0:
                     return
-                self.total = int(self.ent.get())
+                self.total = float(self.ent.get())
                 self.sign = n
                 self.ent.delete(0, "end")
         elif n == "=":
-            if n == "=":
-                if self.sign == "+":
-                    self.total = self.total + int(self.ent.get())
-                    self.ent.delete(0, "end")
-                    self.ent.insert(0, str(self.total))
-                elif self.sign == "-":
-                    self.total = self.total - int(self.ent.get())
-                    self.ent.delete(0, "end")
-                    self.ent.insert(0, str(self.total))
-                elif self.sign == "*":
-                    self.total = self.total * int(self.ent.get())
-                    self.ent.delete(0, "end")
-                    self.ent.insert(0, str(self.total))
-                elif self.sign == "/":
-                    self.total = self.total // int(self.ent.get())
+            if self.sign != " " and self.ent.get() == "":
+                return
+            if self.sign == "+":
+                self.total = self.total + float(self.ent.get())
+                self.ent.delete(0, "end")
+                self.ent.insert(0, str(self.total))
+            elif self.sign == "-":
+                self.total = self.total - float(self.ent.get())
+                self.ent.delete(0, "end")
+                self.ent.insert(0, str(self.total))
+            elif self.sign == "*":
+                self.total = self.total * float(self.ent.get())
+                self.ent.delete(0, "end")
+                self.ent.insert(0, str(self.total))
+            elif self.sign == "/":
+                if float(self.ent.get()) == 0:
+                    self.cleanup()
+                    self.ent.insert(0, "Cannot divide by zero")
+                    self.error = True
+                else:
+                    self.total = self.total // float(self.ent.get())
                     self.ent.delete(0, "end")
                     self.ent.insert(0, str(self.total))
         elif n == "C":
             self.ent.delete(len(self.ent.get()) - 1, "end")
+        elif n == "R":
+            self.cleanup()
         else:
             pass
+
+    def cleanup(self):
+        self.ent.delete(0, "end")
+        self.total = 0
+        self.sign = str()
 
     def makebtns(self):
         for i in range(10):

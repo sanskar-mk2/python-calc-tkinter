@@ -6,8 +6,8 @@ Integer Calculator with GUI made with Python and tkinter
 
 ## Features
 
--   Intuitive GUI?
--   still WIP... 🤷
+-   Keyboard numpad inspired layout
+-   Works on floating point values too
 
 ## Examples
 
