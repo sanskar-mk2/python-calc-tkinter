@@ -9,6 +9,6 @@ Integer Calculator with GUI made with Python and tkinter
 -   Keyboard numpad inspired layout
 -   Works on floating point values too
 
-## Examples
+## Example Screenshots
 
 ![Example](examples/example.png)
