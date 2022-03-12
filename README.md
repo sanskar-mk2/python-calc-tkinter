@@ -1,4 +1,14 @@
 # Python Tkinter Calculator
-Integer Calculator with GUI made with Python and tkinter<br>
-***
-![Example](example.png)
+
+## Overview
+
+Integer Calculator with GUI made with Python and tkinter
+
+## Features
+
+-   Intuitive GUI?
+-   still WIP... 🤷
+
+## Examples
+
+![Example](examples/example.png)
